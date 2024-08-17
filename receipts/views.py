@@ -8,8 +8,8 @@ import pytesseract
 
 class ReceiptUploadView(views.APIView):
     @swagger_auto_schema(
-        operation_description="Upload a receipt image to be processed",
-        responses={201: ReceiptSerializer}
+        request_body=ReceiptSerializer,
+        responses={200: ReceiptSerializer()}
     )
     def post(self, request, *args, **kwargs):
         serializer = ReceiptSerializer(data=request.data)
